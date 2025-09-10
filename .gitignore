@@ -1,0 +1,8 @@
+# Node
+node_modules/
+dist/
+.env
+.parcel-cache/
+
+# macOS
+.DS_Store
