@@ -9,7 +9,7 @@
 
 - Compact and functional timeline: items share lanes when possible using assignLanes, resulting in a space-efficient layout.
 
-- TimelineAxis: added an axis with day labels below the lanes, with a hover vertical line for better readability and UX.
+- TimelineAxis: added an axis with day labels below the lanes.
 
 - Drag & resize: items can be moved and resized interactively, allowing easy adjustment of start/end dates.
 
