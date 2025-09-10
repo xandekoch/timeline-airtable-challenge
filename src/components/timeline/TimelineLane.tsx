@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion"
 import { ITimelineItem } from "../../utils/assignLanes";
 import { TimelineItem } from "./TimelineItem";
 
@@ -23,15 +24,29 @@ export function TimelineLane({ items, minDate, pxPerDay, index, onUpdate }: Lane
         borderBottom: "1px solid #eee",
       }}
     >
-      {items.map((item) => (
-        <TimelineItem
-          key={item.id}
-          item={item}
-          minDate={minDate}
-          pxPerDay={pxPerDay}
-          onUpdate={onUpdate}
-        />
-      ))}
+      <AnimatePresence>
+        {items.map((item) => (
+          <motion.div
+            transition={{
+              type: "spring",
+              stiffness: 500,
+              damping: 40,
+              mass: 0.5,
+            }}
+            key={item.id}
+            layoutId={`item-${item.id}`}
+            initial={false}
+          >
+            <TimelineItem
+              key={item.id}
+              item={item}
+              minDate={minDate}
+              pxPerDay={pxPerDay}
+              onUpdate={onUpdate}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   );
 }

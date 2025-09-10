@@ -6,6 +6,9 @@
     "start": "parcel src/index.html --open"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "1.4.0",
+    "@emotion/react": "11.14.0",
+    "framer-motion": "12.23.12",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
