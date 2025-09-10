@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { useTimelineLayout } from "../../hooks/useTimelineLayout";
 import { ITimelineItem } from "../../utils/assignLanes";
 import { TimelineLane } from "./TimelineLane";
@@ -42,16 +42,8 @@ interface TimelineProps {
 }
 
 export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineProps) {
-  const ref = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState(initialItems);
-  const [containerWidth, setContainerWidth] = useState(width);
   const [zoom, setZoom] = useState(20);
-
-  useEffect(() => {
-    if (ref.current) {
-      setContainerWidth(ref.current.clientWidth);
-    }
-  }, []);
 
   const { lanes, minDate, maxDate } = useTimelineLayout(items);
 
@@ -68,7 +60,6 @@ export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineP
     <>
       <ZoomControl zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
       <div
-        ref={ref}
         style={{ width, height: "fit-content", maxHeight: height, border: "1px solid #ddd", overflow: "auto", position: "relative" }}
       >
         {lanes.map((laneItems, i) => (
