@@ -16,6 +16,7 @@ export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineP
   const [zoom, setZoom] = useState(20);
 
   const { lanes, minDate, maxDate } = useTimelineLayout(items);
+  const isEmpty = items.length === 0;
 
   const handleZoomIn = () => setZoom((z) => Math.min(z + 5, 100));
   const handleZoomOut = () => setZoom((z) => Math.max(z - 5, 5));
@@ -32,17 +33,26 @@ export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineP
       <div
         style={{ width, height: "fit-content", maxHeight: height, border: "1px solid #ddd", overflow: "auto", position: "relative" }}
       >
-        {lanes.map((laneItems, i) => (
-          <TimelineLane
-            key={i}
-            index={i}
-            items={laneItems}
-            minDate={minDate!}
-            pxPerDay={zoom}
-            onUpdate={handleUpdateItem}
-          />
-        ))}
-        <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
+        {isEmpty ? (
+          <div style={{ padding: 20, textAlign: "center", color: "#666" }}>
+            No timeline items to display
+          </div>
+        ) : (
+          <>
+            {lanes.map((laneItems, i) => (
+              <TimelineLane
+                key={i}
+                index={i}
+                items={laneItems}
+                minDate={minDate!}
+                pxPerDay={zoom}
+                onUpdate={handleUpdateItem}
+              />
+            ))}
+            <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
+            <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
+          </>
+        )}
       </div>
     </>
   );
