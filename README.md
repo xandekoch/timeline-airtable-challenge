@@ -1,7 +1,7 @@
 ## Instructions to run:
 
 1. git clone <https://github.com/xandekoch/timeline-airtable-challenge.git>
-2. cd <your-repo-folder>
+2. cd your-repo-folder
 3. Run `npm install` to install dependencies
 4. Run `npm start` to initialize and connect to a node server with your default browser
 
@@ -17,6 +17,8 @@
 
 - Dynamic zoom: zoom control works smoothly, adjusting the width of items according to user preference.
 
+- empty items list validation.
+
 ## What I would change if I were to do it again
 
 - Inline editing: temporarily disabled due to contentEditable issues. Would implement using a controlled input or modal for better stability.
@@ -26,6 +28,8 @@
 - Performance: optimize rendering for very large timelines (virtualization or canvas-based rendering).
 
 - Responsive axis: improve label grouping dynamically based on zoom (day/week/month) for better readability.
+
+- Add automatic scrolling to the timeline container when the user drags or resizes items near the edges.
 
 ## How I made design decisions
 
