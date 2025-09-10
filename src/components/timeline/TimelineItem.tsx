@@ -27,7 +27,7 @@ export function TimelineItem({ item, minDate, pxPerDay, onUpdate }: ItemProps) {
     const handleResizeRight = useResize({ item, side: "right", pxPerDay, onUpdate });
 
     /* Todo: fix contenteditable bug to allow updating the item name */
-    
+
     // const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
     //     onUpdate(item.id, { name: e.currentTarget.textContent || "" });
     // };
@@ -45,19 +45,9 @@ export function TimelineItem({ item, minDate, pxPerDay, onUpdate }: ItemProps) {
             role="listitem"
             tabIndex={0}
             aria-label={`${item.name} from ${item.start} to ${item.end}`}
-            style={{
-                position: "absolute",
-                left,
-                width,
-                height: 30,
-                background: "#4F46E5",
-                borderRadius: 4,
-                display: "flex",
-                alignItems: "center",
-                cursor: "grab",
-                padding: "0 6px",
-                color: "white", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"
-            }}
+            className="absolute flex items-center cursor-grab px-1.5 h-7 rounded bg-indigo-700
+                     text-white whitespace-nowrap overflow-hidden text-ellipsis select-none"
+            style={{ left, width }}
             onMouseDown={handleDrag}
         // contentEditable
         // suppressContentEditableWarning
@@ -67,28 +57,14 @@ export function TimelineItem({ item, minDate, pxPerDay, onUpdate }: ItemProps) {
         >
             <div
                 onMouseDown={handleResizeLeft}
-                style={{
-                    position: "absolute",
-                    left: 0,
-                    top: 0,
-                    width: 6,
-                    height: "100%",
-                    cursor: "w-resize",
-                }}
+                className="absolute top-0 left-0 w-1.5 h-full cursor-w-resize"
             />
 
             {item.name}
 
             <div
                 onMouseDown={handleResizeRight}
-                style={{
-                    position: "absolute",
-                    right: 0,
-                    top: 0,
-                    width: 6,
-                    height: "100%",
-                    cursor: "e-resize",
-                }}
+                className="absolute top-0 right-0 w-1.5 h-full cursor-e-resize"
             />
         </div>
     );

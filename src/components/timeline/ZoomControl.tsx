@@ -9,20 +9,12 @@ export function ZoomControl({ zoom, onZoomIn, onZoomOut }: ZoomControlProps) {
     const zoomPercent = Math.round((zoom / basePxPerDay) * 100);
 
     return (
-        <div
-            style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 12,
-                marginBottom: 8,
-            }}
-        >
-            <button onClick={onZoomOut} aria-label="Zoom out">
+        <div className="flex items-center justify-center gap-3 mb-2">
+            <button className="bg-indigo-600 text-white px-2 rounded cursor-pointer" onClick={onZoomOut} aria-label="Zoom out">
                 -
             </button>
-            <span style={{ minWidth: 50, textAlign: "center" }}>{zoomPercent}%</span>
-            <button onClick={onZoomIn} aria-label="Zoom in">
+            <span className="text-center">{zoomPercent}%</span>
+            <button className="bg-indigo-600 text-white px-2 rounded cursor-pointer" onClick={onZoomIn} aria-label="Zoom in">
                 +
             </button>
         </div>

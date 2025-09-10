@@ -13,21 +13,19 @@
 
 - Drag & resize: items can be moved and resized interactively, allowing easy adjustment of start/end dates.
 
+- Animations on drag and resize with framer-motion.
+
 - TypeScript: fully typed codebase, improving maintainability and reducing potential runtime errors.
 
 - Dynamic zoom: zoom control works smoothly, adjusting the width of items according to user preference.
 
-- empty items list validation.
+- Empty items list validation.
 
 ## What I would change if I were to do it again
 
 - Inline editing: temporarily disabled due to contentEditable issues. Would implement using a controlled input or modal for better stability.
 
-- UI styling: would add TailwindCSS for faster styling and consistent visual language.
-
 - Performance: optimize rendering for very large timelines (virtualization or canvas-based rendering).
-
-- Responsive axis: improve label grouping dynamically based on zoom (day/week/month) for better readability.
 
 - Add automatic scrolling to the timeline container when the user drags or resizes items near the edges.
 
@@ -49,7 +47,7 @@
 
 - Test date calculations and zoom logic.
 
-- Component tests (React Testing Library):
+### Component tests (React Testing Library):
 
 - Verify that Timeline, TimelineLane, and TimelineItem render correctly given a set of items.
 

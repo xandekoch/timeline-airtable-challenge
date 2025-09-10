@@ -7,7 +7,7 @@ interface TimelineAxisProps {
 export function TimelineAxis({ minDate, maxDate, pxPerDay }: TimelineAxisProps) {
     const totalDays = Math.ceil((+maxDate - +minDate) / (1000 * 60 * 60 * 24)) + 1;
 
-    const interval = pxPerDay < 10 ? 7 : pxPerDay < 20 ? 3 : 1;
+    const interval = pxPerDay < 20 ? 7 : pxPerDay < 50 ? 3 : 1;
 
     const getDateLabel = (dayIndex: number) => {
         const d = new Date(minDate);
@@ -17,24 +17,21 @@ export function TimelineAxis({ minDate, maxDate, pxPerDay }: TimelineAxisProps) 
             return d.toLocaleDateString("en-US", { day: "2-digit", month: "short" });
         }
 
-        return d.toLocaleDateString("en-US", { day: "2-digit" });
+        return d.toLocaleDateString("en-US", { day: "2-digit", month: "2-digit" });
     };
 
     return (
-        <div style={{ position: "relative", borderTop: "1px solid #ccc", height: 20 }}>
+        <div className="border-t border-gray-300 h-5">
             {Array.from({ length: totalDays }).map((_, i) => {
                 if (i % interval !== 0) return null;
 
                 return (
                     <div
                         key={i}
+                        className="absolute text-center text-[10px] text-gray-600"
                         style={{
-                            position: "absolute",
                             left: i * pxPerDay,
                             width: pxPerDay * interval,
-                            textAlign: "center",
-                            fontSize: 10,
-                            color: "#555",
                         }}
                     >
                         {getDateLabel(i)}

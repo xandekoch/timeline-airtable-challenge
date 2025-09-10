@@ -17,28 +17,17 @@ export function TimelineLane({ items, minDate, pxPerDay, index, onUpdate }: Lane
     <div
       role="list"
       aria-label={`Timeline lane ${index + 1}`}
-      style={{
-        display: "flex",
-        position: "relative",
-        height: 40,
-        borderBottom: "1px solid #eee",
-      }}
+      className="flex relative h-10 w-full"
     >
       <AnimatePresence>
         {items.map((item) => (
           <motion.div
-            transition={{
-              type: "spring",
-              stiffness: 500,
-              damping: 40,
-              mass: 0.5,
-            }}
+            transition={{ type: "spring", stiffness: 1000, damping: 40, mass: 0.5 }}
             key={item.id}
             layoutId={`item-${item.id}`}
             initial={false}
           >
             <TimelineItem
-              key={item.id}
               item={item}
               minDate={minDate}
               pxPerDay={pxPerDay}

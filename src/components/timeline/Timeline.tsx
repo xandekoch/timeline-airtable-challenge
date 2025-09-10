@@ -11,7 +11,7 @@ interface TimelineProps {
   height?: number;
 }
 
-export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineProps) {
+export function Timeline({ initialItems, width = 1000, height = 800 }: TimelineProps) {
   const [items, setItems] = useState(initialItems);
   const [zoom, setZoom] = useState(20);
 
@@ -31,25 +31,28 @@ export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineP
     <>
       <ZoomControl zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
       <div
-        style={{ width, height: "fit-content", maxHeight: height, border: "1px solid #ddd", overflow: "auto", position: "relative" }}
+        className="border border-gray-300 rounded-lg overflow-auto relative w-full p-2"
+        style={{ maxWidth: width, maxHeight: height, }}
       >
         {isEmpty ? (
-          <div style={{ padding: 20, textAlign: "center", color: "#666" }}>
+          <div className="p-5 text-center text-gray-600">
             No timeline items to display
           </div>
         ) : (
           <>
-            {lanes.map((laneItems, i) => (
-              <TimelineLane
-                key={i}
-                index={i}
-                items={laneItems}
-                minDate={minDate!}
-                pxPerDay={zoom}
-                onUpdate={handleUpdateItem}
-              />
-            ))}
-            <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
+            <div>
+              {lanes.map((laneItems, i) => (
+                <TimelineLane
+                  key={i}
+                  index={i}
+                  items={laneItems}
+                  minDate={minDate!}
+                  pxPerDay={zoom}
+                  onUpdate={handleUpdateItem}
+                />
+              ))}
+              <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
+            </div>
           </>
         )}
       </div>

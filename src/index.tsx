@@ -4,19 +4,11 @@ import timelineItems from "./constants/timelineItems.js";
 
 function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 16,
-        marginTop: 40,
-      }}
-    >
-      <h2 style={{ textAlign: "center" }}>
+    <div className="flex flex-col items-center gap-4 mt-10 mx-5">
+      <h2 className="text-center text-2xl font-semibold">
         Good luck with your assignment! {"\u2728"}
       </h2>
-      <h3 style={{ textAlign: "center" }}>
+      <h3 className="text-center text-lg font-medium">
         {timelineItems.length} timeline items to render
       </h3>
       <Timeline initialItems={timelineItems} />
