@@ -50,7 +50,6 @@ export function Timeline({ initialItems, width = 1000, height = 400 }: TimelineP
               />
             ))}
             <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
-            <TimelineAxis minDate={minDate!} maxDate={maxDate!} pxPerDay={zoom} />
           </>
         )}
       </div>
